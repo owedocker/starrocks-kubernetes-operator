@@ -614,34 +614,22 @@ Get the value of the topologySpreadConstraints field in the starrocksCnSpec
 Get the value of the runAsNonRoot field in the starrocksFESpec
 */}}
 {{- define "starrockscluster.fe.runAsNonRoot" -}}
-{{- if .Values.starrocksFESpec.runAsNonRoot -}}
-{{- .Values.starrocksFESpec.runAsNonRoot -}}
-{{- else if .Values.starrocksCluster.componentValues.runAsNonRoot -}}
-{{- .Values.starrocksCluster.componentValues.runAsNonRoot -}}
-{{- end -}}
-{{- end -}}
+{{- .Values.starrocksFESpec.runAsNonRoot | default .Values.starrocksCluster.componentValues.runAsNonRoot }}
+{{- end }}
 
 {{/*
 Get the value of the runAsNonRoot field in the starrocksBeSpec
 */}}
 {{- define "starrockscluster.be.runAsNonRoot" -}}
-{{- if .Values.starrocksBeSpec.runAsNonRoot -}}
-{{- .Values.starrocksBeSpec.runAsNonRoot -}}
-{{- else if .Values.starrocksCluster.componentValues.runAsNonRoot -}}
-{{- .Values.starrocksCluster.componentValues.runAsNonRoot -}}
-{{- end -}}
-{{- end -}}
+{{- .Values.starrocksBeSpec.runAsNonRoot | default .Values.starrocksCluster.componentValues.runAsNonRoot }}
+{{- end }}
 
 {{/*
 Get the value of the runAsNonRoot field in the starrocksCnSpec
 */}}
 {{- define "starrockscluster.cn.runAsNonRoot" -}}
-{{- if .Values.starrocksCnSpec.runAsNonRoot -}}
-{{- .Values.starrocksCnSpec.runAsNonRoot -}}
-{{- else if .Values.starrocksCluster.componentValues.runAsNonRoot -}}
-{{- .Values.starrocksCluster.componentValues.runAsNonRoot -}}
-{{- end -}}
-{{- end -}}
+{{- .Values.starrocksCnSpec.runAsNonRoot | default .Values.starrocksCluster.componentValues.runAsNonRoot }}
+{{- end }}
 
 {{/*
 Get the value of hostAliases field in the starrocksFESpec
